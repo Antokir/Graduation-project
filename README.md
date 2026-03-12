@@ -1,0 +1,1 @@
+[Описание дипломной работы](GraduationProject.pdf)

@@ -1,0 +1,22 @@
+CREATE TABLE [Queries] (
+	[QueryId] INTEGER  NOT NULL PRIMARY KEY,
+	[UserId] INTEGER  NOT NULL,
+	[VacancyId] NVARCHAR(200)  NOT NULL,
+	[ModelId] INTEGER  NOT NULL,
+	[PredictedSalary] REAL NOT NULL,
+	FOREIGN KEY(ModelId) REFERENCES Models(ModelId),
+	FOREIGN KEY(UserId) REFERENCES Users(UserId)
+);
+
+CREATE TABLE [Models] (
+	[ModelId] INTEGER  NOT NULL PRIMARY KEY,
+	[ModelName] NVARCHAR(200)  NOT NULL UNIQUE,
+	[HuggingFaceModelName] NVARCHAR(200)  NOT NULL,
+	[NumLabels] INTEGER  NOT NULL
+);
+
+CREATE TABLE [Users] (
+	[UserId] INTEGER  NOT NULL PRIMARY KEY,
+	[ModelId] INTEGER  NOT NULL,
+	FOREIGN KEY(ModelId) REFERENCES Models(ModelId)
+);
